@@ -5,28 +5,15 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App bg-sky-300 text-center flex-col justify-evenly p-5">
+      <h1 className="text-blue-700 text-5xl p-7">Vice Weather</h1>
+      <div className="card flex-col justify-evenly">
+        <input type="text" placeholder="From where do you want the weather ?" className="bg-white text-gray-500 p-3"></input>
+        <button onClick className="p-3">Submit</button>
       </div>
-      <h1 className="text-red-500">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
+
+    // Faire 5 jours pour voir donc 5 div
   )
 }
 
