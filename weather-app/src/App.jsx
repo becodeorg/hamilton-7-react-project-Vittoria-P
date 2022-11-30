@@ -3,54 +3,40 @@ import reactLogo from './assets/react.svg'
 
 
 
-const url = "https://api.openweathermap.org/data/2.5/onecall?lat=$%7Blat%7D&lon=$%7Blon%7D&units=metric&appid=$%7Bkey%7D";
-fetch(url)
-    .then(response => response.json())
-
-
+const apiLink = "https://api.openweathermap.org/data/2.5/forecast/?q=";
+const apiKey = "60139c8b2107e392ac604ffc88f931a8"
 
 function App() {
-  const apiKey = ""
-  const [wheatherData, setWheatherData] = useState([{}])
-  const [city, setCity] = useState()
-  const getWheater = (event) => {
+  const [weatherData, setWeatherData] = useState({})
+  const [city, setCity] = useState("Paris")
+  const getWeather = (event) => {
     if(event.key == "Enter"){
-      fetch(apiLink + ${city} + ${apiKey})
+      fetch(`${apiLink}${city}&appid=${apiKey}`)
         .then(response => response.json())
-        .then(data => {setWheatherData(data)
-                        setCity("")})
+        .then(data => {setWeatherData(data)})
     }
-};
+    console.log("weatherdata", weatherData);
+  };
 
-
-/*
-  return (
-    <div className="App bg-sky-300 text-center flex-col justify-evenly p-5">
-      <h1 className="text-blue-700 text-5xl p-7">Vice Weather</h1>
-      <p className="p-3 ">From where do you want the weather ?</p>
-      <div className="card flex-col justify-evenly">
-        <input type="text" ref={inputElement} placeholder="Where ?" className="bg-white text-gray-500 p-3"></input>
-        <button onClick={cityName()} className="p-3">Submit</button>
-      </div>
-    </div>
-  )
-*/
 
 return (
-    <div className='container'>
-        <input className='input' onchange={e=>setCity (e.target.value)} value={city} onKeyPress={getWeather(placeholder = " ... ")}></input>
-            {typeofwheaterData.main === "undefined" ? (
-                <div><p>Please enter city : </p></div>) :
-                    (<div>
-                          <p>{wheatherData.name}</p>
-                          <p>{Math.round(wheatherData.main.temp)}°C</p>
-                          <p>{wheatherData.wheather[e]}</p>
-                    </div>)
+    <div className="App bg-sky-200 text-center p-5">
+      <h1 className="text-blue-700 text-5xl p-7">Vice Weather</h1>
+      <p className="p-3 ">From where do you want the weather ?</p>
+        <input className='input rounded-lg p-3 m-5' onChange={e=> setCity(e.target.value)} value={city} placeholder="Where ?"onKeyDown={getWeather}></input>
+            {weatherData.city ? 
+                (<div className="bg-white text-center text-slate-800">
+                    <p>{weatherData.city.name}</p>
+                    <br></br>
+                    <p>{Math.round(weatherData.temp)}°C</p>
+                    <br></br>
+                    <p>{weatherData.weather}</p>
+                </div>) : "Enter a data"
             }
     </div>
 )
-
-
+}
+// dans l'array, chercher les donnes, des disposées
 
 export default App
 
