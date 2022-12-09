@@ -25,13 +25,13 @@ function App() {
         <h1 className="text-blue-700 text-5xl p-7">Vice Weather</h1>
         <p className="p-3 ">From where do you want the weather ?</p>
           <input className='input rounded-lg p-3 m-5' onChange={e=> setCity(e.target.value)} value={city} placeholder="Where ?"onKeyDown={getWeather}></input>
-              {weatherData.city ? 
-                  (<div className="bg-white text-center text-slate-800 rounded-lg m-3 py-5 px-5">
-                      <p className='font-bold'>{weatherData.city.name}</p>
-                      <p className=''>{parseFloat(weatherData.list[0].main.temp)}°F</p>
-                      <p className=''>{weatherData.weather}</p>
-                  </div>) : "Enter a city"
-              }
+            {weatherData.city ? 
+              (<div className="bg-white text-center text-slate-800 rounded-lg m-3 py-5 px-5">
+                <p className='font-bold'>{weatherData.city.name}</p>
+                <p className=''>{parseFloat(weatherData.list[0].main.temp)}°F</p>
+                <p className=''>{weatherData.weather}</p>
+              </div>) : "Enter a city"
+            }
         <p className='pt-10'>That is juste the temperature for the moment...</p>
         <p className='pb-10'>Upload comming soon...</p>
       </div>
